@@ -1,0 +1,4 @@
+preDesignedSubject : "厥土维下下" , "禧"
+preDesignedTime : 22 : 30
+preDesignedMessage : "唉 ，今天是我的18岁生日欸，明明都已经暗示地那么明显了 ，却还是连一句祝福也不愿意说么 。"
+weChatPath : r"C:\Program Files\Tencent\Weixin\Weixin.exe"

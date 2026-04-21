@@ -1,0 +1,4 @@
+1.获取资源的url，记为path；
+2.确定文件的保存路径，不妨设为D:\桌面（D盘）；
+3.先输入：$client = nem-object System.Net.WebClient
+   再输入：$client.DownloadFile('path','D:\桌面（D盘）')

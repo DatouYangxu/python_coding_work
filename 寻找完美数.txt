@@ -1,0 +1,32 @@
+判断一个数是不是完全数，给定b
+找出b的所有真因数：
+把从1到b-1的所有整数挨个儿试一遍整除一下，是零就放到列表里去不是零就跳过本次循环，将最后的列表求和，看是不是b
+若不是，则不是完美数
+否则（若是）：
+寻找完美数：
+n=int(input())
+L=[]
+for i in range(1,n):
+    if n%i==0:
+        L.append(i)
+    else:
+        continue
+a=sum(L)
+if a==n:
+    print(a==n)
+else:
+    print(a==n)
+
+寻找1000以内的完美数：
+for n in range(1,1001):
+    L=[]
+    for i in range(1,n):
+        if n%i==0:
+            L.append(i)
+        else:
+            continue
+    a=sum(L)
+    if a==n:
+        print(n)
+    else:
+        continue

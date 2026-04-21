@@ -1,0 +1,84 @@
+create table grade(
+year        int,
+prov       char(100),
+ybx         int,
+jsMax     int,
+jsMin      int,
+jsAvg     int,
+hxMax   int,
+hxMin    int,
+hxAvg    int,
+primary key (year,prov));
+
+insert into grade(year,prov,ybx,jsMax,jsMin,jsAvg,hxMax,hxMin,hxAvg)
+values(2014,'湖南',522,670,634,647,643,599,614);
+insert into grade(year,prov,ybx,jsMax,jsMin,jsAvg,hxMax,hxMin,hxAvg)
+values(2015,'湖南',526,670,631,644,633,591,613);
+insert into grade(year,prov,ybx,jsMax,jsMin,jsAvg,hxMax,hxMin,hxAvg)
+values(2016,'湖南',517,662,635,644,646,593,609);
+insert into grade(year,prov,ybx,jsMax,jsMin,jsAvg,hxMax,hxMin,hxAvg)
+values(2014,'上海',423,476,437,454,NULL,NULL,NULL)
+
+##################
+
+
+
+
+
+
+
+
+import re #不一定要使用re库
+def  getNumbern(html,Pass_rate):
+    ###########请在此行之后编写代码###########
+    # print(type(Pass_rate))
+    # print(eval(Pass_rate))
+    # timu=[]
+    count=0
+    pattern=r'<tr[^>]*data-row-key=[^>]*?>.*?</tr>'
+    tiku=re.findall(pattern,html,re.S)
+    for ti in tiku:
+        pat=r'<div[^>]*titleWarp___Hhoy_"><span[^>]*".{2,}"[^>]*?>(.{2,})<[^>]*?></div>'
+        ques=re.search(pat,ti,re.S)
+        quest=ques.group(1)
+        # print(quest)
+        if quest:
+            pat2=r'<td[^>]*class="ant-table-cell">(.{2,}%)</td>'
+            pa_rt=re.search(pat2,ti)
+            rate=pa_rt.group(1)
+            # rate=int(rate[:-1])
+            # Pass_rate=str(Pass_rate)
+            # Pass_rate=Pass_rate[:-1]
+            # Pass_rate=int(Pass_rate)
+            # print(Pass_rate)
+            # print(rate)
+            
+            if rate >Pass_rate:
+                # timu.append(quest)
+                count+=1
+                # print(rate)
+                # print(Pass_rate)
+                # print(timu)
+    # numbers=len(timu)
+    numbers=count
+# <tr class="ant-table-row ant-table-row-level-0" data-row-key="efjwgtb8">
+#             <td class="ant-table-cell ant-table-cell-ellipsis">
+#                 <div class="titleWarp___Hhoy_"><span title="欧拉定理" class="hov___L_H5a">欧拉定理</span></div>
+#             </td>
+#             <td class="ant-table-cell"><span style="display: flex;"><span class="current">79</span></span></td>
+#             <td class="ant-table-cell">48%</td>
+#             <td class="ant-table-cell" style="text-align: left;"><span class="btn-style-1___Knznb">简单</span></td>
+#             <td class="ant-table-cell" style="text-align: center;">76439</td>
+#             <td class="ant-table-cell"><span class="statusText___okgdj">进行中</span></td>
+#         </tr>
+
+    return numbers#此句可根据需要修改或删除
+    
+if __name__ == '__main__':
+    path = input()
+    Pass_rate = input()    
+    f = open(path, 'r')
+    html = f.read()
+    f.close()
+    numbers = getNumbern(html,Pass_rate)
+    print(numbers) 
